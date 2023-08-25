@@ -1,0 +1,16 @@
+<!-- Just a check foundations course on Web development basics. Below will be a list of all my assignments-->
+
+1. A simple structure for web programs
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> Hello </title>
+    </head>
+
+    <body>
+        My First Website!
+    </body>
+</html>
+
+

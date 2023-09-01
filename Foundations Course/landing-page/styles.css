@@ -75,6 +75,7 @@ button {
     background-color: #3882F6;
     box-shadow: none;
     color: white;
+    border-style:none;
 }
 
 

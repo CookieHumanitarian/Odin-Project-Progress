@@ -72,8 +72,9 @@ button {
     border-radius: 8px;
     margin: 0px;
     text-decoration: none;
-    background-color: white;
+    background-color: #3882F6;
     box-shadow: none;
+    color: white;
 }
 
 

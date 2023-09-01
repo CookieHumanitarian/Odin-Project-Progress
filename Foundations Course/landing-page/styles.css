@@ -75,7 +75,37 @@ button {
     background-color: #3882F6;
     box-shadow: none;
     color: white;
-    border-style:none;
+    border-style: none;
+}
+
+.random {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.random_header {
+    font-size: 36px;
+    font-weight: extra-bold;
+    color: #1F2937;
+}
+
+.random.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.within {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    margin: 0 20px;
+    text-align: center;
+}
+
+.container_image {
+    width: 100px;
+    height: 100px;
 }
 
 

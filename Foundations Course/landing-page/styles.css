@@ -177,3 +177,16 @@ button {
     color: white;
     border-style: none;
 }
+
+.footer {
+    background-color: #1F2937;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.footer_text {
+    color: white;
+}

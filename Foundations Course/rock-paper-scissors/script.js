@@ -5,21 +5,19 @@ let computerScore = 0;
 const rock = document.querySelector("#ROCK");
 rock.addEventListener("click", () => {
   computer = getComputerChoice();
-  result = simulateGame("ROCK", computer);
+  displayScore(simulateGame("ROCK", computer));
 });
 
 const paper = document.querySelector("#PAPER");
 paper.addEventListener("click", () => {
   computer = getComputerChoice();
-  result = simulateGame("PAPER", computer);
-  alert(result);
+  displayScore(simulateGame("PAPER", computer));
 });
 
 const scissors = document.querySelector("#SCISSORS");
 scissors.addEventListener("click", () => {
   computer = getComputerChoice();
-  result = simulateGame("SCISSORS", computer);
-  alert(result);
+  displayScore(simulateGame("SCISSORS", computer));
 });
 
 function getComputerChoice() {
@@ -30,35 +28,53 @@ function getComputerChoice() {
 function simulateGame(playerSelection, computerSelection) {
   if (playerSelection === "ROCK") {
     if (computerSelection === "ROCK") {
-      return "Draw!";
+      return "draw";
     } else if (computerSelection === "PAPER") {
       computerScore += 1;
-      return "Computer wins!";
+      return "lose";
     } else {
       playerScore += 1;
-      return "You win!";
+      return "win";
     }
   } else if (playerSelection === "PAPER") {
     if (computerSelection === "ROCK") {
       playerScore += 1;
-      return "You win!!";
+      return "win";
     } else if (computerSelection === "PAPER") {
-      return "Draw!";
+      return "draw";
     } else {
       computerScore += 1;
-      return "Computer wins!";
+      return "lose";
     }
   } else if (playerSelection === "SCISSORS") {
     if (computerSelection === "ROCK") {
       computerScore += 1;
-      return "Computer wins!";
+      return "lose";
     } else if (computerSelection === "Paper") {
       playerScore += 1;
-      return "Player wins!";
+      return "wins";
     } else {
-      return "Draw!";
+      return "draw";
     }
-  } else {
-    return "Invalid Input";
+  }
+}
+
+function displayScore(result) {
+  const content = document.querySelector("#score");
+  const results = document.querySelector("#result");
+  let outcome = result.toUpperCase();
+  content.textContent = `You: ${playerScore} vs Computer: ${computerScore}`;
+  results.textContent = `Result: ${outcome}`;
+
+  if (playerScore == 5) {
+    content.textContent = `YOU WIN`;
+    results.textContent = "";
+    playerScore = 0;
+    computerScore = 0;
+  } else if (computerScore == 5) {
+    content.textContent = "YOU LOSE";
+    playerScore = 0;
+    computerScore = 0;
+    results.textContent = "";
   }
 }

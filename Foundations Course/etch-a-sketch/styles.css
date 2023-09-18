@@ -3,6 +3,7 @@ body {
     justify-content: space-around;
     align-items: center;
     height: 100vh;
+    margin: 20px;
 }
 
 .sidebar {
@@ -17,7 +18,16 @@ button {
 }
 
 .grid,
-.sidebar {
-    border-style: dashed;
+.inner_grid {
+    border-style: dotted;
     border-color: black;
 }
+
+.grid {
+    display: inline-grid;
+    grid-template-columns: repeat(10, auto);
+    height: 300px;
+    width: 300px;
+    border-style: solid;
+}
+

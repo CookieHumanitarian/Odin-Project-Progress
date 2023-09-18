@@ -21,4 +21,11 @@ img {
     width: 200px;
 }
 
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 

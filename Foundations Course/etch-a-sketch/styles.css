@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    margin: 10px;
+}
+
+.grid,
+.sidebar {
+    border-style: dashed;
+    border-color: black;
+}

@@ -1,19 +1,25 @@
+const selection = ["ROCK", "PAPER", "SCISSORS"];
 let playerScore = 0;
 let computerScore = 0;
 
 const rock = document.querySelector("#ROCK");
 rock.addEventListener("click", () => {
-  alert("Hello rock");
+  computer = getComputerChoice();
+  result = simulateGame("ROCK", computer);
 });
 
 const paper = document.querySelector("#PAPER");
 paper.addEventListener("click", () => {
-  alert("Hello paper");
+  computer = getComputerChoice();
+  result = simulateGame("PAPER", computer);
+  alert(result);
 });
 
 const scissors = document.querySelector("#SCISSORS");
 scissors.addEventListener("click", () => {
-  alert("Hello scissors");
+  computer = getComputerChoice();
+  result = simulateGame("SCISSORS", computer);
+  alert(result);
 });
 
 function getComputerChoice() {

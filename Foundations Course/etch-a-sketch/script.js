@@ -13,8 +13,8 @@ newSizeButton.addEventListener("click", function () {
 
 let resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", function () {
-  container.innerHTML;
-  createGrid(16);
+  container.innerHTML = "";
+  createGrid(gridNumber);
 });
 
 function createGrid(value) {

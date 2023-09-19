@@ -11,6 +11,12 @@ newSizeButton.addEventListener("click", function () {
   createGrid(number);
 });
 
+let resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", function () {
+  container.innerHTML;
+  createGrid(16);
+});
+
 function createGrid(value) {
   let gridSize = value * value;
   for (let i = 0; i < gridSize; i++) {

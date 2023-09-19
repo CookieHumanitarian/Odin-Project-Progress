@@ -17,16 +17,15 @@ button {
     margin: 10px;
 }
 
-.grid,
-.inner_grid {
-    border-style: dotted;
+.innerGrid {
+    border-style: solid;
     border-color: black;
 }
 
 .grid {
     display: inline-grid;
-    height: 300px;
-    width: 300px;
+    height: 600px;
+    width: 700px;
     border-style: solid;
 }
 

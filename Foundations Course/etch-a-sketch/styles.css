@@ -17,15 +17,17 @@ button {
     margin: 10px;
 }
 
-.innerGrid {
+.innerGrid,
+.grid {
     border-style: solid;
     border-color: black;
+    border-width: 0.4px;
 }
 
 .grid {
     display: inline-grid;
     height: 600px;
     width: 700px;
-    border-style: solid;
+    border-width: 1px;
 }
 

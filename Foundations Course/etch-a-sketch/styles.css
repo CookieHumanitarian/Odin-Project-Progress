@@ -25,7 +25,6 @@ button {
 
 .grid {
     display: inline-grid;
-    grid-template-columns: repeat(10, auto);
     height: 300px;
     width: 300px;
     border-style: solid;

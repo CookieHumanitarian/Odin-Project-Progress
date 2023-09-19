@@ -1,14 +1,12 @@
 const container = document.getElementById("grid");
 let gridNumber = 10;
 
-function generateGrids(gridNumber) {
-  for (let i = 0; i < gridNumber; i++) {
-    for (let k = 0; k < gridNumber; k++) {
-      let innerGrid = document.createElement("div");
-      innerGrid.classList.add("inner_grid");
-      container.appendChild(innerGrid);
-    }
+let newSizeButton = document.querySelector("#newSize");
+newSizeButton.addEventListener("click", function () {
+  let number = parseInt(prompt("Enter a value", 16));
+  while (isNaN(number) || number < 1) {
+    number = parseInt(prompt("Enter a value", 16));
   }
-}
 
-generateGrids(gridNumber);
+  createGrid(value);
+});

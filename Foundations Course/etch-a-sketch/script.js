@@ -3,13 +3,15 @@ let gridNumber = 16;
 
 function defaultColorChange() {
   let eachGrid = document.querySelectorAll(".innerGrid");
+  console.log(eachGrid);
   eachGrid.forEach(function (e) {
     e.addEventListener("click", function () {
-      if (e.classList.contains("black")) {
-        e.classList.remove("black");
-      } else {
+      console.log("ok");
+      if (!e.classList.contains("black")) {
         e.classList.add("black");
+        return;
       }
+      e.classList.remove("black");
     });
   });
 }
@@ -22,14 +24,12 @@ newSizeButton.addEventListener("click", function () {
   }
   resetGrid();
   createGrid(number);
-  defaultColorChange();
 });
 
 let resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", function () {
-  container.innerHTML = "";
+  resetGrid();
   createGrid(gridNumber);
-  defaultColorChange();
 });
 
 function createGrid(value) {

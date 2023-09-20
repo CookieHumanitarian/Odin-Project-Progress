@@ -24,12 +24,14 @@ newSizeButton.addEventListener("click", function () {
   }
   resetGrid();
   createGrid(number);
+  defaultColorChange();
 });
 
 let resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", function () {
   resetGrid();
   createGrid(gridNumber);
+  defaultColorChange();
 });
 
 function createGrid(value) {
@@ -41,7 +43,6 @@ function createGrid(value) {
     container.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
     container.appendChild(grid);
   }
-  defaultColorChange();
 }
 
 function resetGrid() {
@@ -49,3 +50,4 @@ function resetGrid() {
 }
 
 createGrid(gridNumber);
+defaultColorChange();

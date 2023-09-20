@@ -6,6 +6,10 @@ function defaultColorChange() {
   console.log(eachGrid);
   eachGrid.forEach(function (e) {
     e.addEventListener("click", function () {
+      if (e.classList.contains("black")) {
+        e.classList.remove("black");
+        return;
+      }
       e.classList.add("black");
     });
   });

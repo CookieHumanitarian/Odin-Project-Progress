@@ -3,14 +3,13 @@ let gridNumber = 16;
 
 function defaultColorChange() {
   let eachGrid = document.querySelectorAll(".innerGrid");
-  console.log(eachGrid);
   eachGrid.forEach(function (e) {
     e.addEventListener("click", function () {
       if (e.classList.contains("black")) {
         e.classList.remove("black");
-        return;
+      } else {
+        e.classList.add("black");
       }
-      e.classList.add("black");
     });
   });
 }

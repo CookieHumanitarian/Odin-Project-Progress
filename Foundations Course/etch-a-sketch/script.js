@@ -23,6 +23,16 @@ rainbowButton.addEventListener("click", function () {
   rainbowColorChanger();
 });
 
+let blackWhitebutton = document.querySelector("#default");
+blackWhitebutton.addEventListener("click", function () {
+  defaultColorChange();
+});
+
+let eraserButton = document.querySelector("#eraser");
+eraserButton.addEventListener("click", function () {
+  eraser();
+});
+
 function createGrid(value) {
   container.innerHTML = "";
   let gridSize = value * value;
@@ -33,28 +43,6 @@ function createGrid(value) {
     container.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
     container.appendChild(grid);
   }
-}
-
-function defaultColorChange() {
-  let eachGrid = document.querySelectorAll(".innerGrid");
-  startDrag = false;
-  eachGrid.forEach(function (e) {
-    e.addEventListener("mousedown", function () {
-      startDrag = true;
-      if (!e.classList.contains("black")) {
-        e.classList.add("black");
-        return;
-      }
-    });
-    e.addEventListener("mouseover", function () {
-      if (!e.classList.contains("black") && startDrag === true) {
-        e.classList.add("black");
-      }
-    });
-    e.addEventListener("mouseup", function () {
-      startDrag = false;
-    });
-  });
 }
 
 function rainbowColorChanger() {
@@ -82,8 +70,46 @@ function rainbowColorChanger() {
   });
 }
 
+function defaultColorChange() {
+  let eachGrid = document.querySelectorAll(".innerGrid");
+  startDrag = false;
+  eachGrid.forEach(function (e) {
+    e.addEventListener("mousedown", function () {
+      startDrag = true;
+      e.style.backgroundColor = "black";
+    });
+    e.addEventListener("mouseover", function () {
+      if (startDrag === true) {
+        e.style.backgroundColor = "black";
+      }
+    });
+    e.addEventListener("mouseup", function () {
+      startDrag = false;
+    });
+  });
+}
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
+}
+
+function eraser() {
+  let eachGrid = document.querySelectorAll(".innerGrid");
+  startDrag = false;
+  eachGrid.forEach(function (e) {
+    e.addEventListener("mousedown", function () {
+      startDrag = true;
+      e.style.backgroundColor = "white";
+    });
+    e.addEventListener("mouseover", function () {
+      if (startDrag === true) {
+        e.style.backgroundColor = "white";
+      }
+    });
+    e.addEventListener("mouseup", function () {
+      startDrag = false;
+    });
+  });
 }
 createGrid(gridNumber);
 defaultColorChange();

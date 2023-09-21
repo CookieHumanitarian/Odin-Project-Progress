@@ -9,11 +9,13 @@ newSizeButton.addEventListener("click", function () {
     number = parseInt(prompt("Enter a value", 16));
   }
   createGrid(number);
+  defaultColorChange();
 });
 
 let resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", function () {
   createGrid(gridNumber);
+  defaultColorChange();
 });
 
 let rainbowButton = document.querySelector("#rainbow");
@@ -31,7 +33,6 @@ function createGrid(value) {
     container.style.gridTemplateColumns = `repeat(${value}, 1fr)`;
     container.appendChild(grid);
   }
-  defaultColorChange();
 }
 
 function defaultColorChange() {
@@ -62,20 +63,27 @@ function rainbowColorChanger() {
   eachGrid.forEach(function (e) {
     e.addEventListener("mousedown", function () {
       startDrag = true;
-      if (!e.classList.contains("black")) {
-        e.classList.add("black");
-        return;
-      }
+      let r = getRandomInt(256);
+      let g = getRandomInt(256);
+      let b = getRandomInt(256);
+      e.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
     });
     e.addEventListener("mouseover", function () {
-      if (!e.classList.contains("black") && startDrag === true) {
-        e.classList.add("black");
+      if (startDrag === true) {
+        let r = getRandomInt(256);
+        let g = getRandomInt(256);
+        let b = getRandomInt(256);
+        e.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")";
       }
     });
     e.addEventListener("mouseup", function () {
       startDrag = false;
     });
   });
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
 }
 createGrid(gridNumber);
 defaultColorChange();

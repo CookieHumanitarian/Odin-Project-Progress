@@ -1,17 +1,27 @@
 const container = document.querySelector("#grid");
 let gridNumber = 16;
+let startDrag = false;
 
 function defaultColorChange() {
   let eachGrid = document.querySelectorAll(".innerGrid");
-  console.log(eachGrid);
+  startDrag = false;
   eachGrid.forEach(function (e) {
-    e.addEventListener("click", function () {
-      console.log("ok");
+    e.addEventListener("mousedown", function () {
+      startDrag = true;
       if (!e.classList.contains("black")) {
         e.classList.add("black");
         return;
+      } else {
+        e.classList.remove("black");
       }
-      e.classList.remove("black");
+    });
+    e.addEventListener("mouseover", function () {
+      if (!e.classList.contains("black") && startDrag === true) {
+        e.classList.add("black");
+      }
+    });
+    e.addEventListener("mouseup", function () {
+      startDrag = false;
     });
   });
 }

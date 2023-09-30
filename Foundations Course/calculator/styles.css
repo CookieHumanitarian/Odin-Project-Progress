@@ -22,6 +22,7 @@
     display: flex;
     justify-content: right;
     align-items: end;
+    font-size: xx-large;
 }
 
 .buttons {

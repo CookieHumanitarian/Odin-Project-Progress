@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    border-style: solid;
+    height: 80vh;
+    width: 70vh;
+    margin: auto;
+    margin-top: 10vh;
+    border-radius: 15px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.display,
+.buttons {
+    border-style: solid;
+    padding: 10px;
+    margin: 10px;
+}
+
+.display {
+    height: 10vh;
+}
+
+.buttons {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(4, 1fr);
+    flex: 1;
+}

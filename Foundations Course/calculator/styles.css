@@ -13,7 +13,7 @@
 .display,
 .buttons {
     border-style: solid;
-    padding: 10px;
+    padding: 5px;
     margin: 5px;
 }
 
@@ -26,17 +26,15 @@
 
 .buttons {
     display: grid;
-    gap: 1px;
     grid-template-columns: repeat(4, 1fr);
     flex: 1;
-}
-
-.innerButton.zero{
-    grid-column: span 2;
 }
 
 .innerButton {
     margin: 0.5px;
 }
 
+.innerButton.zero{
+    grid-column: span 2;
+}
 

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CALCULATOR</title>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <div class="container">
-            <div class="display">Display</div>
+            <div class="display" id="display"></div>
             <div class="buttons">
-                <button type="button" class="innerButton C">C</button>
+                <button type="button" class="clear">C</button>
                 <button type="button" class="innerButton sign">+/-</button>
                 <button type="button" class="innerButton percent">%</button>
                 <button type="button" class="innerButton divide">/</button>
@@ -29,7 +29,7 @@
                 <button type="button" class="innerButton plus">+</button>
                 <button type="button" class="innerButton zero">0</button>
                 <button type="button" class="innerButton decimal">.</button>
-                <button type="button" class="innerButton equal">=</button>
+                <button type="button" class="equal">=</button>
             </div>
     </div>
     </body>

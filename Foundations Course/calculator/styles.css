@@ -31,7 +31,8 @@
     flex: 1;
 }
 
-.innerButton {
+.innerButton,
+.sign {
     margin: 0.5px;
 }
 

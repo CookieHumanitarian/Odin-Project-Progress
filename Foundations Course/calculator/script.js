@@ -1,7 +1,8 @@
 let var1 = "";
-let var2 = "";
-let total = 0;
+let total = null;
 let sign = "";
+let count = 0;
+
 let buttons = document.querySelectorAll(".innerButton");
 for (let i = 0; i < buttons.length; i++) {
   let button = buttons[i];
@@ -9,37 +10,13 @@ for (let i = 0; i < buttons.length; i++) {
     clear();
     var1 += button.innerHTML;
     document.getElementById("display").innerHTML = var1;
-
-    if (sign == "/") {
-      let temp = var2;
-      document.getElementById("display").innerHTML = temp;
-      var1 = divideFunction(var1, var2);
-      var2 = null;
-      console.log(`temp: ${temp}`);
-    } else if (sign == "*") {
-      let temp = var2;
-      document.getElementById("display").innerHTML = temp;
-      var1 = multiplyFunction(var1, var2);
-      var2 = null;
-    } else if (sign == "+") {
-      let temp = var2;
-      document.getElementById("display").innerHTML = temp;
-      var1 = addFunction(var1, var2);
-      var2 = null;
-    } else if (sign == "-") {
-      let temp = var2;
-      document.getElementById("display").innerHTML = temp;
-      var1 = minusFunction(var1, var2);
-      var2 = null;
-    }
   });
 }
 
 let clears = document.querySelector(".clear");
 clears.addEventListener("click", () => {
   var1 = "";
-  var2 = "";
-  total = 0;
+  total = null;
   sign = "";
   clear();
 });
@@ -47,26 +24,69 @@ clears.addEventListener("click", () => {
 let divides = document.querySelector(".sign.divide");
 divides.addEventListener("click", () => {
   sign = "/";
+  if (total == null) {
+    total = var1;
+    var1 = "";
+  } else {
+    if (var1 != "") {
+      total = divideFunction(total, var1);
+      document.getElementById("display").innerHTML = total;
+    }
+  }
 });
 
 let multiply = document.querySelector(".sign.multiply");
 multiply.addEventListener("click", () => {
-  sign = "*";
+  if (total == null) {
+    total = var1;
+    var1 = "";
+  } else {
+    if (var1 != "") {
+      total = multiplyFunction(total, var1);
+      document.getElementById("display").innerHTML = total;
+    }
+  }
 });
 
 let addition = document.querySelector(".sign.plus");
 addition.addEventListener("click", () => {
   sign = "+";
+  if (total == null) {
+    total = var1;
+    var1 = "";
+  } else {
+    if (var1 != "") {
+      total = addFunction(total, var1);
+      document.getElementById("display").innerHTML = total;
+    }
+  }
 });
 
 let subtraction = document.querySelector(".sign.minus");
 subtraction.addEventListener("click", () => {
   sign = "-";
+  if (total == null) {
+    total = var1;
+    var1 = "";
+  } else {
+    if (var1 != "") {
+      total = minusFunction(total, var1);
+      document.getElementById("display").innerHTML = total;
+    }
+  }
 });
 
 let equal = document.querySelector(".equal");
 equal.addEventListener("click", () => {
-  total = parseFloat(var1);
+  if (sign == "/") {
+    total = divideFunction(total, var1);
+  } else if (sign == "*") {
+    total = multiplyFunction(total, var1);
+  } else if (sign == "+") {
+    total = addFunction(total, var1);
+  } else {
+    total = minusFunction(total, var1);
+  }
   clear();
   document.getElementById("display").innerHTML = total;
 });
@@ -75,7 +95,7 @@ let percent = document.querySelector(".sign.percent");
 percent.addEventListener("click", () => {
   let temp = parseFloat(var1);
   temp /= 100;
-  var1 = temp.toString();
+  total = temp.toString();
   document.getElementById("display").innerHTML = temp;
 });
 
@@ -83,31 +103,35 @@ let signChange = document.querySelector(".sign.preSign");
 signChange.addEventListener("click", () => {
   let temp = parseFloat(var1);
   temp *= -1;
-  var1 = temp.toString();
+  total = temp.toString();
   document.getElementById("display").innerHTML = var1;
 });
 
 function divideFunction(a, b) {
   let x = parseFloat(a);
   let y = parseFloat(b);
+  var1 = "";
   return x / y;
 }
 
 function multiplyFunction(a, b) {
   let x = parseFloat(a);
   let y = parseFloat(b);
+  var1 = "";
   return x * y;
 }
 
 function addFunction(a, b) {
   let x = parseFloat(a);
   let y = parseFloat(b);
+  var1 = "";
   return x + y;
 }
 
 function minusFunction(a, b) {
   let x = parseFloat(a);
   let y = parseFloat(b);
+  var1 = "";
   return x - y;
 }
 

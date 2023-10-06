@@ -1,140 +1,96 @@
 let var1 = "";
 let total = null;
 let sign = "";
-let count = 0;
 
-let buttons = document.querySelectorAll(".innerButton");
-for (let i = 0; i < buttons.length; i++) {
-  let button = buttons[i];
-  button.addEventListener("click", () => {
-    clear();
-    var1 += button.innerHTML;
-    document.getElementById("display").innerHTML = var1;
-  });
+function updateDisplay(value) {
+  document.getElementById("display").innerHTML = value;
 }
 
-let clears = document.querySelector(".clear");
-clears.addEventListener("click", () => {
-  var1 = "";
-  total = null;
-  sign = "";
-  clear();
-});
-
-let divides = document.querySelector(".sign.divide");
-divides.addEventListener("click", () => {
-  sign = "/";
-  if (total == null) {
-    total = var1;
-    var1 = "";
-  } else {
-    if (var1 != "") {
-      total = divideFunction(total, var1);
-      document.getElementById("display").innerHTML = total;
-    }
-  }
-});
-
-let multiply = document.querySelector(".sign.multiply");
-multiply.addEventListener("click", () => {
-  if (total == null) {
-    total = var1;
-    var1 = "";
-  } else {
-    if (var1 != "") {
-      total = multiplyFunction(total, var1);
-      document.getElementById("display").innerHTML = total;
-    }
-  }
-});
-
-let addition = document.querySelector(".sign.plus");
-addition.addEventListener("click", () => {
-  sign = "+";
-  if (total == null) {
-    total = var1;
-    var1 = "";
-  } else {
-    if (var1 != "") {
-      total = addFunction(total, var1);
-      document.getElementById("display").innerHTML = total;
-    }
-  }
-});
-
-let subtraction = document.querySelector(".sign.minus");
-subtraction.addEventListener("click", () => {
-  sign = "-";
-  if (total == null) {
-    total = var1;
-    var1 = "";
-  } else {
-    if (var1 != "") {
-      total = minusFunction(total, var1);
-      document.getElementById("display").innerHTML = total;
-    }
-  }
-});
-
-let equal = document.querySelector(".equal");
-equal.addEventListener("click", () => {
-  if (sign == "/") {
-    total = divideFunction(total, var1);
-  } else if (sign == "*") {
-    total = multiplyFunction(total, var1);
-  } else if (sign == "+") {
-    total = addFunction(total, var1);
-  } else {
-    total = minusFunction(total, var1);
-  }
-  clear();
-  document.getElementById("display").innerHTML = total;
-});
-
-let percent = document.querySelector(".sign.percent");
-percent.addEventListener("click", () => {
-  let temp = parseFloat(var1);
-  temp /= 100;
-  total = temp.toString();
-  document.getElementById("display").innerHTML = temp;
-});
-
-let signChange = document.querySelector(".sign.preSign");
-signChange.addEventListener("click", () => {
-  let temp = parseFloat(var1);
-  temp *= -1;
-  total = temp.toString();
-  document.getElementById("display").innerHTML = var1;
-});
-
-function divideFunction(a, b) {
-  let x = parseFloat(a);
-  let y = parseFloat(b);
-  var1 = "";
-  return x / y;
+function appendToVar1(value) {
+  var1 += value;
+  updateDisplay(var1);
 }
 
-function multiplyFunction(a, b) {
-  let x = parseFloat(a);
-  let y = parseFloat(b);
-  var1 = "";
-  return x * y;
-}
+function calculateFunction() {
+  if (total === null) {
+    total = parseFloat(var1);
+  } else {
+    const currentValue = parseFloat(var1);
+    if (!isNaN(currentValue)) {
+      switch (sign) {
+        case "+":
+          total += currentValue;
+          break;
+        case "-":
+          total -= currentValue;
+          break;
+        case "x":
+          total *= currentValue;
+          break;
+        case "/":
+          if (currentValue !== 0) {
+            total /= currentValue;
+          } else {
+            updateDisplay("Error: Division by zero");
+            return;
+          }
+          break;
+        default:
+          break;
+      }
+    }
+  }
 
-function addFunction(a, b) {
-  let x = parseFloat(a);
-  let y = parseFloat(b);
   var1 = "";
-  return x + y;
-}
-
-function minusFunction(a, b) {
-  let x = parseFloat(a);
-  let y = parseFloat(b);
-  var1 = "";
-  return x - y;
+  updateDisplay(total);
 }
 
 function clear() {
-  document.getElementById("display").innerHTML = "";
+  total = null;
+  var1 = "";
+  sign = "";
+  updateDisplay("");
 }
+
+document.querySelectorAll(".innerButton").forEach((button) => {
+  button.addEventListener("click", () => {
+    appendToVar1(button.innerHTML);
+  });
+});
+
+document.querySelector(".clear").addEventListener("click", () => {
+  clear();
+});
+
+document.querySelectorAll(".sign").forEach((operator) => {
+  operator.addEventListener("click", () => {
+    if (var1 !== "") {
+      calculateFunction();
+    }
+    sign = operator.innerHTML;
+  });
+});
+
+document.querySelector(".equal").addEventListener("click", () => {
+  if (var1 !== "") {
+    calculateFunction();
+  }
+});
+
+document.querySelector(".sign.percent").addEventListener("click", () => {
+  const temp = parseFloat(var1);
+  if (!isNaN(temp)) {
+    const result = temp / 100;
+    updateDisplay(result.toString());
+    var1 = result.toString();
+  }
+});
+
+document.querySelector(".sign.preSign").addEventListener("click", () => {
+  const temp = parseFloat(var1);
+  if (!isNaN(temp)) {
+    const result = -temp;
+    updateDisplay(result.toString());
+    var1 = result.toString();
+  }
+});
